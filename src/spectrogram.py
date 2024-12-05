@@ -100,7 +100,6 @@ def process_song(dir_path, save_path, target_source, target_rate, fft_size, hop_
     mix_mag, mix_phase = process_file(mix_path, target_rate, fft_size, hop_size, mix=True)
 
     # process stem
-    print(f"{target_source}")
     inst_path = os.path.join(dir_path, target_source + ".wav")
     stem_mag, _ = process_file(inst_path, target_rate, fft_size, hop_size)
 
@@ -139,7 +138,6 @@ def generate_spectrograms(source_dir, target_dir, target_source, target_rate, ff
         in_path = os.path.join(source_dir, s)
         out_path = os.path.join(target_dir, s + ".npz")
 
-        print(f"Track: {s}")
         process_song(in_path, out_path, target_source, target_rate, fft_size, hop_size)
 
-    print("Spectrograms generated successfully!")
+    print(f"Spectrograms for {len(songs)} songs generated successfully!")
